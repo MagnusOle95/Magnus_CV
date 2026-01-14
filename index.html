@@ -136,8 +136,16 @@
         <svg class="w-12 h-12" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
         </svg>
        </div>
-      </div><!-- Contact Info -->
-      <div class="space-y-4 mb-8">
+      </div>
+
+      <!-- Picture Frame -->
+      <div class="mb-8">
+       <div class="w-full aspect-square rounded-lg border-2" style="border-color: rgba(59, 130, 246, 0.6);">
+       </div>
+      </div>
+
+      <!-- Contact Info - MOVED DOWN -->
+      <div class="space-y-4 mb-8" style="margin-top: 20px;">
        <h3 class="font-mono-code text-xs tracking-widest uppercase opacity-60">// Kontakt</h3>
        <div class="flex items-center gap-3">
         <svg class="w-4 h-4 opacity-60" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -352,53 +360,123 @@
 
     // Code snippets with jokes and references
     const codeSnippets = [
-      `// It works on my machine ¯\\_(ツ)_/¯
-try {
-  hackPlanet();
-} catch (e) {
-  console.log("Not today");
-}`,
-      
-      `// 99 little bugs in the code
-// 99 little bugs in the code
-// Take one down, patch it around
-// 127 little bugs in the code
-fixBugs();`,
-      
-      `if (bug === null) {
-  // This should never happen
-  // But it will
-  panic();
-}`,
-      
-      `// TODO: Fix this before prod
-// WARNING: DO NOT TOUCH
-// I have no idea why this works
-const MAGIC_NUMBER = 42;`,
-      
-      `function isEven(num) {
-  return num % 2 === 0;
+      `async function penetrationTest() {
+  try {
+    const vulnScan = await scanVulnerabilities();
+    await testSSL();
+    await checkSQLInjection({ payload: "' OR '1'='1" });
+    console.log("Penetration test successful");
+    // It works on my machine ¯\\_(ツ)_/¯
+  } catch (error) {
+    console.log("Security hole found!");
+    await notifyClient();
+    hide_from_manager();
+  }
 }
-// Senior dev: "Why not (num & 1) === 0?"
-// Me: "I like to keep things simple"`,
+// This is fine`,
       
-      `// Security through obscurity
-const password = atob("cGFzc3dvcmQxMjM=");
-// Just kidding! Never do this.
-encrypt(password, STRONG_KEY);`,
+      `function validatePassword(password) {
+  const hasNumbers = /[0-9]/.test(password);
+  const hasSymbols = /[!@#$%]/.test(password);
+  const isLongEnough = password.length > 8;
+  
+  if (isLongEnough && hasNumbers && hasSymbols) {
+    console.log("Password secure");
+    return true;
+  }
+  
+  // But password123 works too
+  return password === "admin123";
+}
+
+// Security through difficulty of understanding`,
       
-      `while (alive) {
-  eat();
-  sleep();
-  code();
-  repeat();
+      `class EncryptionService {
+  constructor() {
+    this.algorithm = "AES-256";
+    this.keySize = 256;
+  }
+  
+  encrypt(data) {
+    // This should never be plaintext
+    // But it happens
+    if (data.includes("password")) {
+      logToFile(data); // For debugging...
+      return this.hardcodedKey(data);
+    }
+    return crypto.encrypt(data);
+  }
 }`,
       
-      `// There are 2 hard problems in CS:
-// 1. Cache invalidation
-// 2. Naming things
-// 3. Off-by-one errors
-const problems = ["cache", "naming"];`
+      `const securityConfig = {
+  // TODO: Implement proper TLS
+  // WARNING: DO NOT HARDCODE KEYS
+  // ...but the deployment is at 3pm
+  API_KEY: "sk-1234567890abcdef",
+  DATABASE_PASSWORD: "ChangeMeLater2024",
+  // This was supposed to be changed
+  JWT_SECRET: "my-secret-key-123",
+  SSL_VERIFY: false // For testing only (it's been 2 years)
+};`,
+      
+      `function validateInput(userInput) {
+  // SQL injection check
+  if (userInput.includes("DROP TABLE")) {
+    return false;
+  }
+  
+  // XSS prevention - 50% effective
+  const sanitized = userInput.replace("<script>", "");
+  
+  function isActuallySafe(input) {
+    return true; // Trust the user
+  }
+  
+  return isActuallySafe(sanitized);
+}`,
+      
+      `const authRoutes = [
+  { path: "/api/admin", method: "GET", auth: true },
+  { path: "/api/users/delete", auth: "maybe" },
+  { path: "/admin/reset-db", backup: false },
+];
+
+function checkAuthentication(token) {
+  // Security through obscurity
+  return token !== undefined;
+}
+
+// Works in production... sometimes`,
+      
+      `let securityActive = true;
+while (securityActive) {
+  try {
+    monitorThreats();
+    updateVulnDatabase();
+    patchServers();
+    sleep(86400000);
+  } catch (breach) {
+    sendAlertToTeam();
+    panic();
+    restart();
+  }
+}
+
+// This loop controls our sanity`,
+      
+      `const commonVulnerabilities = [
+  "SQL Injection",
+  "XSS Attacks",
+  "CSRF Tokens Missing",
+  "Weak Passwords",
+  "Forgotten SSH Keys",
+  "That one library with CVE-2024-XXXXX"
+];
+
+const fixedIssues = [];
+// Still waiting for fixes...
+const budget = "$0";
+const time = "next sprint"`
     ];
 
     let currentSnippetIndex = 0;
