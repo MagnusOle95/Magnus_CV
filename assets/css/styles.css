@@ -1,0 +1,98 @@
+body {
+      box-sizing: border-box;
+    }
+    
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .font-body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .skill-bar {
+      background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    .cursor-blink {
+      animation: blink 1s infinite;
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+    }
+    
+    #code-typewriter {
+      font-size: 10px;
+      line-height: 1.6;
+      font-family: 'JetBrains Mono', monospace;
+      opacity: 0.15;
+      white-space: pre;
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.2);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+      }
+    }
+
+    #print-button {
+      animation: pulseGlow 2s infinite;
+    }
+
+    @page { 
+      size: A4; 
+      margin: 12mm; 
+    }
+
+    @media print {
+      /* Skjul ting der ødelægger print */
+      button { 
+        display: none !important; 
+      }
+      #code-typewriter, #lock-watermark { 
+        display: none !important; 
+      }
+      .cursor-blink { 
+        display: none !important; 
+      }
+
+      /* Lys baggrund + sort tekst */
+      body, #cv-container { 
+        background: #fff !important; 
+      }
+      #sidebar, #main-content { 
+        color: #000 !important; 
+      }
+
+      /* Layout der passer til A4 */
+      #cv-container { 
+        height: auto !important; 
+        overflow: visible !important; 
+      }
+      #sidebar { 
+        width: 32% !important; 
+      }
+      #main-content { 
+        padding: 0 !important; 
+      }
+
+      /* Undgå Tailwind/fixed issues i print */
+      .fixed { 
+        position: static !important; 
+      }
+    }
+
+@view-transition { navigation: auto; }
