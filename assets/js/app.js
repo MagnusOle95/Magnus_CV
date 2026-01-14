@@ -222,7 +222,8 @@ const time = "next sprint"`
 
       document.getElementById('email-display').textContent = emailText;
       document.getElementById('phone-display').textContent = phoneText;
-      document.getElementById('location-display').textContent = locationText;
+      const locationDisplayText = locationText.replace(/(\d{4})\s+([^\s].*)$/, '$1\u00a0$2');
+      document.getElementById('location-display').textContent = locationDisplayText;
 
       const emailLink = document.getElementById('email-link');
       const phoneLink = document.getElementById('phone-link');
