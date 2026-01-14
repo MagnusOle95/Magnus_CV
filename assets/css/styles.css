@@ -13,6 +13,12 @@ body {
     .skill-bar {
       background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
     }
+
+    #email-display {
+      white-space: nowrap;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
     
     @keyframes blink {
       0%, 50% { opacity: 1; }
@@ -54,45 +60,34 @@ body {
 
     @page { 
       size: A4; 
-      margin: 12mm; 
+      margin: 0; 
     }
 
     @media print {
-      /* Skjul ting der ødelægger print */
+      /* Skjul kun print-knap */
       button { 
         display: none !important; 
       }
+      /* Fjern faste baggrundselementer der laver ekstra side i print */
       #code-typewriter, #lock-watermark { 
         display: none !important; 
       }
-      .cursor-blink { 
-        display: none !important; 
+      /* Bevar farver i PDF */
+      body, #cv-container, #sidebar, #main-content, * { 
+        -webkit-print-color-adjust: exact !important; 
+        print-color-adjust: exact !important; 
       }
-
-      /* Lys baggrund + sort tekst */
-      body, #cv-container { 
-        background: #fff !important; 
-      }
-      #sidebar, #main-content { 
-        color: #000 !important; 
-      }
-
-      /* Layout der passer til A4 */
+      /* Undgå klipning og ekstra sider fra fixed/overflow */
       #cv-container { 
         height: auto !important; 
         overflow: visible !important; 
+        width: 100% !important;
+        margin: 0 !important;
       }
-      #sidebar { 
-        width: 32% !important; 
-      }
-      #main-content { 
-        padding: 0 !important; 
-      }
-
-      /* Undgå Tailwind/fixed issues i print */
       .fixed { 
         position: static !important; 
       }
     }
+
 
 @view-transition { navigation: auto; }
