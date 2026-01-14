@@ -274,30 +274,28 @@ const time = "next sprint"`
                 window.location.href = androidIntentUrl;
                 return;
               }
+              if (isIOS) {
+                // Universal link opens app if installed, otherwise falls back to browser.
+                window.location.href = linkedinWebUrl;
+                return;
+              }
 
-              const startTime = Date.now();
               window.location.href = linkedinAppUrl;
-
-              const fallback = () => {
-                if (!document.hidden && Date.now() - startTime < 2500) {
-                  window.location.href = linkedinWebUrl;
-                }
-                document.removeEventListener('visibilitychange', onVisibilityChange);
-              };
-
-              const onVisibilityChange = () => {
-                if (document.hidden) {
-                  document.removeEventListener('visibilitychange', onVisibilityChange);
-                }
-              };
-
-              document.addEventListener('visibilitychange', onVisibilityChange);
-              setTimeout(fallback, 1200);
             });
             linkedinLink.dataset.mobileBound = 'true';
           }
+          // Ensure mobile clicks stay in same tab so the app can open.
+          linkedinLink.removeAttribute('target');
+          linkedinLink.removeAttribute('rel');
+          if (isAndroid && androidIntentUrl) {
+            linkedinLink.href = androidIntentUrl;
+          } else {
+            linkedinLink.href = linkedinWebUrl;
+          }
         } else {
           linkedinLink.href = linkedinWebUrl;
+          linkedinLink.setAttribute('target', '_blank');
+          linkedinLink.setAttribute('rel', 'noopener noreferrer');
         }
       }
       document.getElementById('about-display').textContent = config.about_text || defaultConfig.about_text;
