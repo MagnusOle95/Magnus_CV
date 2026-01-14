@@ -60,7 +60,7 @@ body {
 
     @page { 
       size: A4; 
-      margin: 0; 
+      margin: 8mm; 
     }
 
     @media print {
@@ -86,6 +86,12 @@ body {
       }
       .fixed { 
         position: static !important; 
+      }
+      /* Print: hold navn på én linje */
+      #name-display { 
+        font-size: 32px !important; 
+        line-height: 1.1 !important; 
+        white-space: nowrap; 
       }
     }
 
