@@ -215,6 +215,9 @@ const time = "next sprint"`
       const emailText = config.email || defaultConfig.email;
       const phoneText = config.phone || defaultConfig.phone;
       const locationText = config.location || defaultConfig.location;
+      const userAgent = navigator.userAgent || '';
+      const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(userAgent);
+      const isIOS = /iPad|iPhone|iPod/i.test(userAgent);
 
       document.getElementById('email-display').textContent = emailText;
       document.getElementById('phone-display').textContent = phoneText;
@@ -223,15 +226,59 @@ const time = "next sprint"`
       const emailLink = document.getElementById('email-link');
       const phoneLink = document.getElementById('phone-link');
       const locationLink = document.getElementById('location-link');
+      const linkedinLink = document.getElementById('linkedin-link');
 
       if (emailLink) {
         emailLink.href = `mailto:${emailText}`;
       }
       if (phoneLink) {
-        phoneLink.href = `tel:${phoneText.replace(/[^\d+]/g, '')}`;
+        if (isMobile) {
+          phoneLink.href = `tel:${phoneText.replace(/[^\d+]/g, '')}`;
+          phoneLink.style.pointerEvents = '';
+          phoneLink.style.cursor = '';
+        } else {
+          phoneLink.removeAttribute('href');
+          phoneLink.style.pointerEvents = 'none';
+          phoneLink.style.cursor = 'default';
+        }
       }
       if (locationLink) {
-        locationLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationText)}`;
+        if (isMobile) {
+          const encodedLocation = encodeURIComponent(locationText);
+          locationLink.href = isIOS
+            ? `maps://?q=${encodedLocation}`
+            : `geo:0,0?q=${encodedLocation}`;
+        } else {
+          locationLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(locationText)}`;
+        }
+      }
+      if (linkedinLink) {
+        const linkedinWebUrl = linkedinLink.getAttribute('href') || 'https://linkedin.com/in/magnus-sandfeld-larsen';
+        const match = linkedinWebUrl.match(/linkedin\.com\/in\/([^/?#]+)/i);
+        const slug = match ? match[1] : '';
+        const linkedinAppUrl = slug ? `linkedin://in/${slug}` : 'linkedin://';
+
+        if (isMobile && slug) {
+          linkedinLink.href = linkedinAppUrl;
+          if (!linkedinLink.dataset.mobileBound) {
+            linkedinLink.addEventListener('click', (event) => {
+              if (!isMobile) {
+                return;
+              }
+              event.preventDefault();
+              const startTime = Date.now();
+              window.location.href = linkedinAppUrl;
+              setTimeout(() => {
+                if (Date.now() - startTime < 1500) {
+                  window.location.href = linkedinWebUrl;
+                }
+              }, 800);
+            });
+            linkedinLink.dataset.mobileBound = 'true';
+          }
+        } else {
+          linkedinLink.href = linkedinWebUrl;
+        }
       }
       document.getElementById('about-display').textContent = config.about_text || defaultConfig.about_text;
     }
