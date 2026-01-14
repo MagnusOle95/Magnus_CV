@@ -194,6 +194,7 @@ const time = "next sprint"`
       document.getElementById('section-icon-about').style.color = accentColor;
       document.getElementById('section-icon-exp').style.color = accentColor;
       document.getElementById('section-icon-edu').style.color = accentColor;
+      document.getElementById('section-icon-projects').style.color = accentColor;
     }
 
     function applyFonts(config) {
