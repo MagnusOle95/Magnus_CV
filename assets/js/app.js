@@ -218,6 +218,7 @@ const time = "next sprint"`
       const userAgent = navigator.userAgent || '';
       const isMobile = /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(userAgent);
       const isIOS = /iPad|iPhone|iPod/i.test(userAgent);
+      const isAndroid = /Android/i.test(userAgent);
 
       document.getElementById('email-display').textContent = emailText;
       document.getElementById('phone-display').textContent = phoneText;
@@ -257,22 +258,41 @@ const time = "next sprint"`
         const match = linkedinWebUrl.match(/linkedin\.com\/in\/([^/?#]+)/i);
         const slug = match ? match[1] : '';
         const linkedinAppUrl = slug ? `linkedin://in/${slug}` : 'linkedin://';
+        const androidIntentUrl = slug
+          ? `intent://in/${slug}#Intent;scheme=linkedin;package=com.linkedin.android;S.browser_fallback_url=${encodeURIComponent(linkedinWebUrl)};end`
+          : '';
 
         if (isMobile && slug) {
-          linkedinLink.href = linkedinAppUrl;
           if (!linkedinLink.dataset.mobileBound) {
             linkedinLink.addEventListener('click', (event) => {
               if (!isMobile) {
                 return;
               }
               event.preventDefault();
+
+              if (isAndroid && androidIntentUrl) {
+                window.location.href = androidIntentUrl;
+                return;
+              }
+
               const startTime = Date.now();
               window.location.href = linkedinAppUrl;
-              setTimeout(() => {
-                if (Date.now() - startTime < 1500) {
+
+              const fallback = () => {
+                if (!document.hidden && Date.now() - startTime < 2500) {
                   window.location.href = linkedinWebUrl;
                 }
-              }, 800);
+                document.removeEventListener('visibilitychange', onVisibilityChange);
+              };
+
+              const onVisibilityChange = () => {
+                if (document.hidden) {
+                  document.removeEventListener('visibilitychange', onVisibilityChange);
+                }
+              };
+
+              document.addEventListener('visibilitychange', onVisibilityChange);
+              setTimeout(fallback, 1200);
             });
             linkedinLink.dataset.mobileBound = 'true';
           }
