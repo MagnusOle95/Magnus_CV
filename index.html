@@ -48,6 +48,22 @@
       white-space: pre;
     }
 
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.2);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+      }
+    }
+
+    #print-button {
+      animation: pulseGlow 2s infinite;
+    }
+
     @page { 
       size: A4; 
       margin: 12mm; 
@@ -102,6 +118,7 @@
    </div>
    <div class="min-h-full flex relative z-10"><!-- Print button -->
     <button
+      id="print-button"
       onclick="window.print()"
       class="fixed top-4 right-4 z-50 px-3 py-2 rounded-md text-sm border"
       style="background: rgba(13,31,60,0.9); color: #e2e8f0; border-color: rgba(59,130,246,0.6);"
