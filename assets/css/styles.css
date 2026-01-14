@@ -60,7 +60,7 @@ body {
 
     @page { 
       size: A4; 
-      margin: 8mm; 
+      margin: 4mm; 
     }
 
     @media print {
