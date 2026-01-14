@@ -47,6 +47,49 @@
       opacity: 0.15;
       white-space: pre;
     }
+
+    @page { 
+      size: A4; 
+      margin: 12mm; 
+    }
+
+    @media print {
+      /* Skjul ting der ødelægger print */
+      button { 
+        display: none !important; 
+      }
+      #code-typewriter, #lock-watermark { 
+        display: none !important; 
+      }
+      .cursor-blink { 
+        display: none !important; 
+      }
+
+      /* Lys baggrund + sort tekst */
+      body, #cv-container { 
+        background: #fff !important; 
+      }
+      #sidebar, #main-content { 
+        color: #000 !important; 
+      }
+
+      /* Layout der passer til A4 */
+      #cv-container { 
+        height: auto !important; 
+        overflow: visible !important; 
+      }
+      #sidebar { 
+        width: 32% !important; 
+      }
+      #main-content { 
+        padding: 0 !important; 
+      }
+
+      /* Undgå Tailwind/fixed issues i print */
+      .fixed { 
+        position: static !important; 
+      }
+    }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -57,7 +100,15 @@
     <svg id="lock-watermark" class="opacity-[0.04]" fill="none" stroke="currentColor" viewbox="0 0 24 24" style="width: 1000px; height: 1000px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
     </svg>
    </div>
-   <div class="min-h-full flex relative z-10"><!-- Sidebar -->
+   <div class="min-h-full flex relative z-10"><!-- Print button -->
+    <button
+      onclick="window.print()"
+      class="fixed top-4 right-4 z-50 px-3 py-2 rounded-md text-sm border"
+      style="background: rgba(13,31,60,0.9); color: #e2e8f0; border-color: rgba(59,130,246,0.6);"
+    >
+      Print / Gem PDF
+    </button>
+    <!-- Sidebar -->
     <aside id="sidebar" class="w-72 p-8 relative overflow-hidden flex-shrink-0"><!-- Animated code typewriter background -->
      <div class="absolute inset-0 p-4 pointer-events-none select-none" style="overflow-y: auto; overflow-x: hidden;">
       <div id="code-typewriter" style="min-height: 100%;"></div>
