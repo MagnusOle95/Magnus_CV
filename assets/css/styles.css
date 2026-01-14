@@ -64,13 +64,12 @@ body {
     }
 
     @media print {
-      /* Skjul kun print-knap */
-      button { 
-        display: none !important; 
-      }
-      /* Fjern faste baggrundselementer der laver ekstra side i print */
-      #code-typewriter, #lock-watermark { 
-        display: none !important; 
+      /* Skjul elementer der ikke skal med i PDF */
+      button,
+      #code-typewriter,
+      #lock-watermark,
+      #profile-icon {
+        display: none !important;
       }
       /* Bevar farver i PDF */
       body, #cv-container, #sidebar, #main-content, * { 
