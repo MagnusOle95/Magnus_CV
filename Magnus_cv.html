@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="da" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT Security CV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+    }
+    
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    
+    .font-body {
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .skill-bar {
+      background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    .cursor-blink {
+      animation: blink 1s infinite;
+    }
+    
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent-color), transparent);
+    }
+    
+    #code-typewriter {
+      font-size: 10px;
+      line-height: 1.6;
+      font-family: 'JetBrains Mono', monospace;
+      opacity: 0.15;
+      white-space: pre;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body">
+  <div id="cv-container" class="h-full overflow-auto relative"><!-- GIANT LOCK WATERMARK BEHIND EVERYTHING -->
+   <div class="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0">
+    <svg id="lock-watermark" class="opacity-[0.04]" fill="none" stroke="currentColor" viewbox="0 0 24 24" style="width: 1000px; height: 1000px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+    </svg>
+   </div>
+   <div class="min-h-full flex relative z-10"><!-- Sidebar -->
+    <aside id="sidebar" class="w-72 p-8 relative overflow-hidden flex-shrink-0"><!-- Animated code typewriter background -->
+     <div class="absolute inset-0 p-4 pointer-events-none select-none" style="overflow-y: auto; overflow-x: hidden;">
+      <div id="code-typewriter" style="min-height: 100%;"></div>
+     </div>
+     <div class="relative z-10"><!-- Profile Icon -->
+      <div class="mb-8">
+       <div id="profile-icon" class="w-24 h-24 rounded-full flex items-center justify-center mx-auto border-2">
+        <svg class="w-12 h-12" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+       </div>
+      </div><!-- Contact Info -->
+      <div class="space-y-4 mb-8">
+       <h3 class="font-mono-code text-xs tracking-widest uppercase opacity-60">// Kontakt</h3>
+       <div class="flex items-center gap-3">
+        <svg class="w-4 h-4 opacity-60" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg><span id="email-display" class="text-sm break-all">magnus.s.larsen@hotmail.com</span>
+       </div>
+       <div class="flex items-center gap-3">
+        <svg class="w-4 h-4 opacity-60" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg><span id="phone-display" class="text-sm">28 71 55 38</span>
+       </div>
+       <div class="flex items-start gap-3">
+        <svg class="w-4 h-4 opacity-60 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg><span id="location-display" class="text-sm leading-snug">Risdalsvej 48, 8260 Viby J</span>
+       </div>
+      </div><!-- Skills -->
+      <div class="space-y-4 mb-8">
+       <h3 class="font-mono-code text-xs tracking-widest uppercase opacity-60">// Kompetencer</h3>
+       <div class="space-y-2 text-sm">
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>DevSecOps &amp; Scrum</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>Policy as Code (OPA/Rego)</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>Infrastructure as Code</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>Penetration Testing</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>SIEM &amp; Log Analysis</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>OSINT &amp; Incident Response</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>.NET · C# · Python · Java</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>SQL · REST · Git</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>PLC-programmering</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>ISO/IEC 27001/27002/27005</span>
+        </div>
+       </div>
+      </div><!-- Languages & Links -->
+      <div class="space-y-4 mb-8">
+       <h3 class="font-mono-code text-xs tracking-widest uppercase opacity-60">// Sprog &amp; Links</h3>
+       <div class="space-y-2 text-sm">
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>Dansk (modersmål)</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">►</span> <span>Engelsk (flydende)</span>
+        </div>
+        <div class="flex items-start gap-2 mt-3 mb-3"><span class="opacity-40 mt-0.5">💬</span> <span class="text-xs italic opacity-70 leading-snug">"Et mere detaljeret CV kan findes på min LinkedIn"</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">🔗</span> <span class="text-xs break-all">linkedin.com/in/magnus-sandfeld-larsen</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">🔗</span> <span class="text-xs">github.com/MagnusOle95</span>
+        </div>
+       </div>
+      </div><!-- Personal Competencies -->
+      <div class="space-y-4 mb-8">
+       <h3 class="font-mono-code text-xs tracking-widest uppercase opacity-60">// Personlige</h3>
+       <div class="flex flex-wrap gap-2"><span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Velovervejet</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Problemløser</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Tilpasningsdygtig</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Organiseret</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Empatisk</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Gå-på-mod</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Nysgerrig</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Detaljeorienteret</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Arbejdsom</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Ansvarsbevidst</span> <span class="text-xs px-2 py-1 rounded" style="background: rgba(59, 130, 246, 0.15);">Positiv</span>
+       </div>
+      </div><!-- Interests -->
+      <div class="space-y-4">
+       <h3 class="font-mono-code text-xs tracking-widest uppercase opacity-60">// Interesser</h3>
+       <div class="space-y-2 text-sm">
+        <div class="flex items-center gap-2"><span class="opacity-40">🧗</span> <span>Klatring / Bouldering</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">🎮</span> <span>Computerspil</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">🏕️</span> <span>Friluftsliv</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">🏃</span> <span>Løb</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">🎲</span> <span>Brætspil</span>
+        </div>
+        <div class="flex items-center gap-2"><span class="opacity-40">🍺</span> <span>Ølsmagning</span>
+        </div>
+       </div>
+      </div>
+     </div>
+    </aside><!-- Main Content -->
+    <main id="main-content" class="flex-1 p-10"><!-- Header -->
+     <header class="mb-10">
+      <div class="flex items-center gap-2 mb-2"><span class="font-mono-code text-xs opacity-40">&lt;</span>
+       <h1 id="name-display" class="text-4xl font-semibold tracking-tight">Magnus Sandfeld Larsen</h1><span class="font-mono-code text-xs opacity-40">/&gt;</span>
+      </div>
+      <div class="flex items-center gap-3"><span id="title-display" class="text-lg opacity-70">IT-Sikkerhedsspecialist</span> <span class="cursor-blink font-mono-code">_</span>
+      </div>
+     </header><!-- About -->
+     <section class="mb-10">
+      <div class="flex items-center gap-3 mb-4">
+       <svg id="section-icon-about" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+       </svg>
+       <h2 class="font-mono-code text-sm tracking-widest uppercase">Profil</h2>
+      </div>
+      <div class="section-divider mb-4"></div>
+      <p id="about-display" class="leading-relaxed opacity-80">IT-sikkerhedsstuderende med solid baggrund inden for automation og softwareudvikling. Specialiseret i DevSecOps, Policy as Code, og sikkerhedsanalyse. Erfaring med penetration testing, phishing-simulationer, og infrastruktur som kode. Kombinerer praktisk IT-sikkerhedsviden med teknisk ekspertise fra industriel automation og softwareudvikling.</p>
+     </section><!-- Experience -->
+     <section class="mb-10">
+      <div class="flex items-center gap-3 mb-4">
+       <svg id="section-icon-exp" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+       </svg>
+       <h2 class="font-mono-code text-sm tracking-widest uppercase">Erfaring</h2>
+      </div>
+      <div class="section-divider mb-6"></div>
+      <div class="space-y-6">
+       <div class="mb-6">
+        <div class="flex justify-between items-start mb-2">
+         <h3 class="font-medium">Studentermedhjælper / Praktikant</h3><span class="font-mono-code text-xs opacity-50">Mar 2025 - Nu</span>
+        </div>
+        <p class="text-sm opacity-60 mb-2">Bankdata – Aarhus / Hybrid</p>
+        <p class="text-sm opacity-80">Scrum · DevSecOps · Policy as Code · OPA (Open Policy Agent) · Rego · Infrastructure as Code · Access Control (RBAC/ABAC/PBAC) · Automation · Vidensdeling</p>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-start mb-2">
+         <h3 class="font-medium">Praktikant / Softwareudvikler</h3><span class="font-mono-code text-xs opacity-50">Aug 2023 - Dec 2023</span>
+        </div>
+        <p class="text-sm opacity-60 mb-2">Jonson Consult / Cargo-BI – Aarhus</p>
+        <p class="text-sm opacity-80">Softwareudvikling · .NET · C# · ASP.NET MVC · Xamarin · SQL · REST · AI-integration (OpenAI, Dante AI) · Git · Scrum · Agile udvikling · Cross-platform development · Mobile app development</p>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-start mb-2">
+         <h3 class="font-medium">Vikararbejde</h3><span class="font-mono-code text-xs opacity-50">Jul 2021 - Feb 2025</span>
+        </div>
+        <p class="text-sm opacity-60 mb-2">FLAIR (tidligere Adecco) – Aarhus</p>
+        <p class="text-sm opacity-80">Lagerarbejde i Salling varehus · Varemodtagelse · Sortering · Opbevaring · Fleksibelt vikariat ved siden af studie</p>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-start mb-2">
+         <h3 class="font-medium">Frivilligt arbejde</h3><span class="font-mono-code text-xs opacity-50">Jan 2020 - Mar 2020</span>
+        </div>
+        <p class="text-sm opacity-60 mb-2">Folkekirkens Nødhjælp – Nepal / Danmark</p>
+        <p class="text-sm opacity-80">Udviklings- og nødhjælpsarbejde · Kulturel bevidsthed · Diversitet og inklusion · Samarbejde på tværs af kulturer</p>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-start mb-2">
+         <h3 class="font-medium">Industrielektriker</h3><span class="font-mono-code text-xs opacity-50">Apr 2018 - Aug 2019</span>
+        </div>
+        <p class="text-sm opacity-60 mb-2">AB-ELCO – Ringsted</p>
+        <p class="text-sm opacity-80">Opsætning og vedligehold af maskinanlæg · Fejlfinding · Elektrisk ledningsføring · Kundekontakt</p>
+       </div>
+       <div class="mb-6">
+        <div class="flex justify-between items-start mb-2">
+         <h3 class="font-medium">Automatikteknikerlærling</h3><span class="font-mono-code text-xs opacity-50">Okt 2014 - Apr 2018</span>
+        </div>
+        <p class="text-sm opacity-60 mb-2">Novo Nordisk – Kalundborg</p>
+        <p class="text-sm opacity-80">Planlagt vedligeholdelse · Fejlfinding · PLC-programmering · Kalibrering af målere og følere · Lean værktøjer</p>
+       </div>
+      </div>
+     </section><!-- Education -->
+     <section>
+      <div class="flex items-center gap-3 mb-4">
+       <svg id="section-icon-edu" class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+       </svg>
+       <h2 class="font-mono-code text-sm tracking-widest uppercase">Uddannelse</h2>
+      </div>
+      <div class="section-divider mb-6"></div>
+      <div class="space-y-4">
+       <div class="flex justify-between">
+        <div>
+         <h3 class="font-medium">Professionsbachelor i IT-Sikkerhed</h3>
+         <p class="text-sm opacity-60">Erhvervsakademi Aarhus – Viby J</p>
+         <p class="text-xs opacity-50 mt-1">GoPhish-projekt · Phishing-simulationer · Incident Response · Loganalyse · Pentest · OSINT · SIEM · Network Security · Risk &amp; Compliance (ISO/IEC 27001/27002/27005) · Secure Coding · Infrastructure as Code · SMTP Configuration · Phishing Simulation</p>
+        </div><span class="font-mono-code text-xs opacity-50 whitespace-nowrap ml-4">Aug 2024 - Jan 2026</span>
+       </div>
+       <div class="flex justify-between">
+        <div>
+         <h3 class="font-medium">Datamatiker (AP)</h3>
+         <p class="text-sm opacity-60">Erhvervsakademi Aarhus – Viby J</p>
+         <p class="text-xs opacity-50 mt-1">Systemudvikling og programmering · .NET · C# · Java · Python · SQL · HTML · CSS · JavaScript · Webudvikling · ASP.NET MVC · Agile &amp; Waterfall metoder · Systemudvikling</p>
+        </div><span class="font-mono-code text-xs opacity-50 whitespace-nowrap ml-4">Aug 2021 - Jan 2024</span>
+       </div>
+       <div class="flex justify-between">
+        <div>
+         <h3 class="font-medium">HF Enkeltfag</h3>
+         <p class="text-sm opacity-60">Aarhus HF &amp; VUC – Aarhus C</p>
+         <p class="text-xs opacity-50 mt-1">Opkvalificering til Datamatiker-uddannelsen</p>
+        </div><span class="font-mono-code text-xs opacity-50 whitespace-nowrap ml-4">Aug 2020 - Jun 2021</span>
+       </div>
+       <div class="flex justify-between">
+        <div>
+         <h3 class="font-medium">Højskoleophold</h3>
+         <p class="text-sm opacity-60">Silkeborg Højskole – Silkeborg</p>
+         <p class="text-xs opacity-50 mt-1">Personlig udvikling · Samarbejde · Projektarbejde</p>
+        </div><span class="font-mono-code text-xs opacity-50 whitespace-nowrap ml-4">Aug 2019 - Feb 2020</span>
+       </div>
+       <div class="flex justify-between">
+        <div>
+         <h3 class="font-medium">Automatik- og procesuddannelsen (Automatiktekniker)</h3>
+         <p class="text-sm opacity-60">EUC Syd – Sønderborg</p>
+         <p class="text-xs opacity-50 mt-1">Karakter: 12 · Elektrisk fejlfinding · PLC-programmering · Robotteknik · Elektrisk sikkerhed · Hydrauliske og pneumatiske systemer</p>
+        </div><span class="font-mono-code text-xs opacity-50 whitespace-nowrap ml-4">Okt 2014 - Apr 2018</span>
+       </div>
+      </div>
+     </section>
+    </main>
+   </div>
+  </div>
+  <script>
+    const defaultConfig = {
+      full_name: 'Magnus Sandfeld Larsen',
+      job_title: 'IT-Sikkerhedsspecialist',
+      email: 'magnus.s.larsen@hotmail.com',
+      phone: '28 71 55 38',
+      location: 'Risdalsvej 48, 8260 Viby J',
+      about_text: 'IT-sikkerhedsstuderende med solid baggrund inden for automation og softwareudvikling. Specialiseret i DevSecOps, Policy as Code, og sikkerhedsanalyse. Erfaring med penetration testing, phishing-simulationer, og infrastruktur som kode. Kombinerer praktisk IT-sikkerhedsviden med teknisk ekspertise fra industriel automation og softwareudvikling.',
+      background_color: '#0a1628',
+      sidebar_color: '#0d1f3c',
+      text_color: '#e2e8f0',
+      accent_color: '#3b82f6',
+      secondary_color: '#1e3a5f',
+      font_family: 'Inter',
+      font_size: 16
+    };
+
+    // Code snippets with jokes and references
+    const codeSnippets = [
+      `// It works on my machine ¯\\_(ツ)_/¯
+try {
+  hackPlanet();
+} catch (e) {
+  console.log("Not today");
+}`,
+      
+      `// 99 little bugs in the code
+// 99 little bugs in the code
+// Take one down, patch it around
+// 127 little bugs in the code
+fixBugs();`,
+      
+      `if (bug === null) {
+  // This should never happen
+  // But it will
+  panic();
+}`,
+      
+      `// TODO: Fix this before prod
+// WARNING: DO NOT TOUCH
+// I have no idea why this works
+const MAGIC_NUMBER = 42;`,
+      
+      `function isEven(num) {
+  return num % 2 === 0;
+}
+// Senior dev: "Why not (num & 1) === 0?"
+// Me: "I like to keep things simple"`,
+      
+      `// Security through obscurity
+const password = atob("cGFzc3dvcmQxMjM=");
+// Just kidding! Never do this.
+encrypt(password, STRONG_KEY);`,
+      
+      `while (alive) {
+  eat();
+  sleep();
+  code();
+  repeat();
+}`,
+      
+      `// There are 2 hard problems in CS:
+// 1. Cache invalidation
+// 2. Naming things
+// 3. Off-by-one errors
+const problems = ["cache", "naming"];`
+    ];
+
+    let currentSnippetIndex = 0;
+    let currentText = '';
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typewriterEffect() {
+      const typewriterEl = document.getElementById('code-typewriter');
+      const currentSnippet = codeSnippets[currentSnippetIndex];
+      
+      if (!isDeleting && charIndex < currentSnippet.length) {
+        // Typing
+        currentText = currentSnippet.substring(0, charIndex + 1);
+        charIndex++;
+        typewriterEl.textContent = currentText;
+        setTimeout(typewriterEffect, 30);
+      } else if (!isDeleting && charIndex === currentSnippet.length) {
+        // Pause at end
+        setTimeout(() => {
+          isDeleting = true;
+          typewriterEffect();
+        }, 3000);
+      } else if (isDeleting && charIndex > 0) {
+        // Deleting
+        currentText = currentSnippet.substring(0, charIndex - 1);
+        charIndex--;
+        typewriterEl.textContent = currentText;
+        setTimeout(typewriterEffect, 15);
+      } else if (isDeleting && charIndex === 0) {
+        // Move to next snippet
+        isDeleting = false;
+        currentSnippetIndex = (currentSnippetIndex + 1) % codeSnippets.length;
+        setTimeout(typewriterEffect, 500);
+      }
+    }
+
+    function applyColors(config) {
+      const root = document.documentElement;
+      root.style.setProperty('--accent-color', config.accent_color || defaultConfig.accent_color);
+      
+      const container = document.getElementById('cv-container');
+      const sidebar = document.getElementById('sidebar');
+      const mainContent = document.getElementById('main-content');
+      const profileIcon = document.getElementById('profile-icon');
+      const lockWatermark = document.getElementById('lock-watermark');
+      
+      container.style.backgroundColor = config.background_color || defaultConfig.background_color;
+      sidebar.style.backgroundColor = config.sidebar_color || defaultConfig.sidebar_color;
+      
+      const textColor = config.text_color || defaultConfig.text_color;
+      const accentColor = config.accent_color || defaultConfig.accent_color;
+      
+      sidebar.style.color = textColor;
+      mainContent.style.color = textColor;
+      
+      profileIcon.style.borderColor = accentColor;
+      lockWatermark.style.color = accentColor;
+      
+      document.getElementById('section-icon-about').style.color = accentColor;
+      document.getElementById('section-icon-exp').style.color = accentColor;
+      document.getElementById('section-icon-edu').style.color = accentColor;
+    }
+
+    function applyFonts(config) {
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      const fontSize = config.font_size || defaultConfig.font_size;
+      const baseFontStack = 'Inter, system-ui, sans-serif';
+      
+      document.body.style.fontFamily = `${fontFamily}, ${baseFontStack}`;
+      document.body.style.fontSize = `${fontSize}px`;
+      
+      document.getElementById('name-display').style.fontSize = `${fontSize * 2.5}px`;
+      document.getElementById('title-display').style.fontSize = `${fontSize * 1.125}px`;
+    }
+
+    function applyContent(config) {
+      document.getElementById('name-display').textContent = config.full_name || defaultConfig.full_name;
+      document.getElementById('title-display').textContent = config.job_title || defaultConfig.job_title;
+      document.getElementById('email-display').textContent = config.email || defaultConfig.email;
+      document.getElementById('phone-display').textContent = config.phone || defaultConfig.phone;
+      document.getElementById('location-display').textContent = config.location || defaultConfig.location;
+      document.getElementById('about-display').textContent = config.about_text || defaultConfig.about_text;
+    }
+
+    async function onConfigChange(config) {
+      applyColors(config);
+      applyFonts(config);
+      applyContent(config);
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.sidebar_color || defaultConfig.sidebar_color,
+            set: (value) => { config.sidebar_color = value; window.elementSdk.setConfig({ sidebar_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (value) => { config.font_family = value; window.elementSdk.setConfig({ font_family: value }); }
+        },
+        fontSizeable: {
+          get: () => config.font_size || defaultConfig.font_size,
+          set: (value) => { config.font_size = value; window.elementSdk.setConfig({ font_size: value }); }
+        }
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['full_name', config.full_name || defaultConfig.full_name],
+        ['job_title', config.job_title || defaultConfig.job_title],
+        ['email', config.email || defaultConfig.email],
+        ['phone', config.phone || defaultConfig.phone],
+        ['location', config.location || defaultConfig.location],
+        ['about_text', config.about_text || defaultConfig.about_text]
+      ]);
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    } else {
+      onConfigChange(defaultConfig);
+    }
+
+    // Start the typewriter effect
+    typewriterEffect();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bd64ae524b492df',t:'MTc2ODMyMTk3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
