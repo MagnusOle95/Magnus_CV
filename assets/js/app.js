@@ -1,10 +1,9 @@
-const defaultConfig = {
+﻿const defaultConfig = {
       full_name: 'Magnus Sandfeld Larsen',
       job_title: 'IT-Sikkerhedsspecialist',
       email: 'magnus.s.larsen@hotmail.com',
       phone: '28 71 55 38',
       location: 'Spobjergvej 12, 8220 Brabrand',
-      about_text: 'IT-sikkerhedsstuderende med solid baggrund inden for automation og softwareudvikling. Specialiseret i DevSecOps, Policy as Code, og sikkerhedsanalyse. Erfaring med penetration testing, phishing-simulationer, og infrastruktur som kode. Kombinerer praktisk IT-sikkerhedsviden med teknisk ekspertise fra industriel automation og softwareudvikling.',
       background_color: '#0a1628',
       sidebar_color: '#0d1f3c',
       text_color: '#e2e8f0',
@@ -299,7 +298,6 @@ const time = "next sprint"`
           linkedinLink.setAttribute('rel', 'noopener noreferrer');
         }
       }
-      document.getElementById('about-display').textContent = config.about_text || defaultConfig.about_text;
     }
 
     async function onConfigChange(config) {
@@ -347,7 +345,6 @@ const time = "next sprint"`
         ['email', config.email || defaultConfig.email],
         ['phone', config.phone || defaultConfig.phone],
         ['location', config.location || defaultConfig.location],
-        ['about_text', config.about_text || defaultConfig.about_text]
       ]);
     }
 
@@ -364,3 +361,4 @@ const time = "next sprint"`
 
     // Start the typewriter effect
     typewriterEffect();
+
