@@ -88,8 +88,17 @@ body {
       /* Sørg for at sidebaren beholder sin baggrund hele siden ned i PDF */
       #sidebar {
         position: relative !important;
-        padding-top: 12px !important;
-        padding-bottom: 12px !important;
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+      }
+      /* Giv hovedindholdet samme luft i top/bund i PDF */
+      #main-content {
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
       }
       #sidebar::before {
         content: '';
