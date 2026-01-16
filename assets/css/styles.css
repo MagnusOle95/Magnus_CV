@@ -88,6 +88,8 @@ body {
       /* Sørg for at sidebaren beholder sin baggrund hele siden ned i PDF */
       #sidebar {
         position: relative !important;
+        padding-top: 12px !important;
+        padding-bottom: 12px !important;
       }
       #sidebar::before {
         content: '';
