@@ -56,6 +56,7 @@ body {
 
     #print-button {
       animation: pulseGlow 2s infinite;
+      right: 20px !important; 
     }
 
     @page { 
@@ -148,4 +149,6 @@ body {
       opacity: 0.95;
       font-weight: 600;
       text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35);
+      padding-left: 2.1em;
+      text-indent: -2.1em;
     }
