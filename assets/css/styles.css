@@ -93,6 +93,12 @@ body {
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;
       }
+      /* Skjul det tomme ikon-wrap i print, så billedet kommer højere op */
+      #sidebar .relative > .mb-8:first-child {
+        display: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
       /* Giv hovedindholdet samme luft i top/bund i PDF */
       #main-content {
         padding-top: 24px !important;
