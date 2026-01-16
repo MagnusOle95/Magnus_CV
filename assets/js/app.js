@@ -171,7 +171,11 @@ const time = "next sprint"`
 
     function applyColors(config) {
       const root = document.documentElement;
+      const backgroundColor = config.background_color || defaultConfig.background_color;
+      const sidebarColor = config.sidebar_color || defaultConfig.sidebar_color;
       root.style.setProperty('--accent-color', config.accent_color || defaultConfig.accent_color);
+      root.style.setProperty('--background-color', backgroundColor);
+      root.style.setProperty('--sidebar-color', sidebarColor);
       
       const container = document.getElementById('cv-container');
       const sidebar = document.getElementById('sidebar');
@@ -179,8 +183,10 @@ const time = "next sprint"`
       const profileIcon = document.getElementById('profile-icon');
       const lockWatermark = document.getElementById('lock-watermark');
       
-      container.style.backgroundColor = config.background_color || defaultConfig.background_color;
-      sidebar.style.backgroundColor = config.sidebar_color || defaultConfig.sidebar_color;
+      container.style.backgroundColor = backgroundColor;
+      sidebar.style.backgroundColor = sidebarColor;
+      document.body.style.backgroundColor = backgroundColor;
+      document.documentElement.style.backgroundColor = backgroundColor;
       
       const textColor = config.text_color || defaultConfig.text_color;
       const accentColor = config.accent_color || defaultConfig.accent_color;

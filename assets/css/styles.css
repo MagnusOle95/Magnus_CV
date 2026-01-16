@@ -64,12 +64,40 @@ body {
     }
 
     @media print {
+      /* Fyld hele siden med baggrundsfarven (main) */
+      html, body {
+        background: var(--background-color, #0a1628) !important;
+      }
+      body {
+        position: relative !important;
+      }
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: var(--background-color, #0a1628);
+        z-index: -2;
+      }
       /* Skjul elementer der ikke skal med i PDF */
       button,
       #code-typewriter,
       #lock-watermark,
       #profile-icon {
         display: none !important;
+      }
+      /* Sørg for at sidebaren beholder sin baggrund hele siden ned i PDF */
+      #sidebar {
+        position: relative !important;
+      }
+      #sidebar::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 18rem; /* svarer til w-72 */
+        height: 100vh;
+        background: var(--sidebar-color, inherit);
+        z-index: -1;
       }
       /* Bevar farver i PDF */
       body, #cv-container, #sidebar, #main-content, * { 
