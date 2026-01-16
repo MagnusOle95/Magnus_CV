@@ -355,6 +355,39 @@ const time = "next sprint"`
       ]);
     }
 
+    function initPrintButton() {
+      const btn = document.getElementById('print-button');
+      if (!btn) return;
+      // Prefer JS handler (handles mobile fallbacks) over inline onclick
+      btn.removeAttribute('onclick');
+      btn.addEventListener('click', async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const canPrint = typeof window.print === 'function';
+        if (canPrint) {
+          window.print();
+          return;
+        }
+
+        // Fallback: offer share sheet if available (some mobile browsers)
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: document.title || 'CV',
+              text: 'Gem eller print CV',
+              url: window.location.href
+            });
+            return;
+          } catch (err) {
+            // Ignore share cancellation and continue to alert
+          }
+        }
+
+        alert('På mobilen: Brug browserens del/print-funktion for at gemme som PDF.');
+      });
+    }
+
     if (window.elementSdk) {
       window.elementSdk.init({
         defaultConfig,
@@ -368,4 +401,6 @@ const time = "next sprint"`
 
     // Start the typewriter effect
     typewriterEffect();
+    // Initialize print/download handling (with mobile-friendly fallback)
+    initPrintButton();
 
